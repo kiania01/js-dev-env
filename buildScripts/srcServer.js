@@ -1,9 +1,22 @@
-var express = require("express");
-var path = require("path");
-var open = require("open");
+import express from "express";
+import path from "path";
+import open from "open";
+import webpack from "webpack";
+import config from "../webpack.config.dev";
 
-var port = 3000; // available port
-var app = express(); // create express instance
+/* eslint-disable no-console */
+
+const port = 3000; // available port
+const app = express(); // create express instance
+const compiler = webpack(config); // create webpack config instance
+
+app.use(
+  require("webpack-dev-middleware")(compiler, {
+    // integrate webpack with express
+    noInfo: true,
+    publicPath: config.output.publicPath
+  })
+);
 
 app.get("/", function(req, res) {
   // any references to the root should be handled by this function
