@@ -24,6 +24,11 @@ app.get("/", function(req, res) {
   // delcare our routing (where the application should load)- the response should send a file to the index.html in our current directory
 });
 
+app.get("/users", function(req, res) {
+  // Hard coding for simplicity. Pretend this hits a real database
+  res.json([{ id: 1, firstName: "Abeer", lastName: "Kiani" }]);
+});
+
 app.listen(port, function(err) {
   if (err) {
     // print out if theres and error opening the server
