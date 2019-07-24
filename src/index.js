@@ -1,7 +1,10 @@
-import { getUsers } from "./api/userApi";
+// import "./index.css";
+// import numeral from "numeral";
+import { getUsers } from "./api/userApi"; // reference to the api call
 
 //Populate table of users via API call
 getUsers().then(result => {
+  // promise
   let usersBody = "";
 
   result.forEach(user => {
@@ -13,13 +16,6 @@ getUsers().then(result => {
       </tr>`;
   });
 
+  // returned string of HTML - usersBody. Place in inner HTML of that "users" table body in index.html
   global.document.getElementById("users").innerHTML = usersBody;
 });
-
-// import "./index.css";
-// import numeral from "numeral";
-
-// /* eslint-disable no-console */
-
-// const courseValue = numeral(1000).format("$0,0.00");
-// console.log(`I would pay ${courseValue} for this awesome course!`);
