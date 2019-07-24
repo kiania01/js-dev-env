@@ -1,4 +1,4 @@
-// import "./index.css";
+import "./index.css";
 // import numeral from "numeral";
 import { getUsers } from "./api/userApi"; // reference to the api call
 

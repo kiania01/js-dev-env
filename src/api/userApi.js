@@ -1,4 +1,7 @@
 import "whatwg-fetch"; // runs in browsers that doesnt have fetch support
+import getBaseUrl from "./baseUrl";
+
+const baseUrl = getBaseUrl();
 
 export function getUsers() {
   // only public function "export"
@@ -7,7 +10,7 @@ export function getUsers() {
 
 function get(url) {
   // the call that uses fetch
-  return fetch(url).then(onSuccess, onError);
+  return fetch(baseUrl + url).then(onSuccess, onError);
 }
 
 function onSuccess(response) {
