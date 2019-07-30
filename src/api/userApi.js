@@ -4,13 +4,25 @@ import getBaseUrl from "./baseUrl";
 const baseUrl = getBaseUrl();
 
 export function getUsers() {
-  // only public function "export"
+  // public function "export"
   return get("users");
 }
 
+export function deleteUser(id) {
+  return del(`users/${id}`);
+}
+
+// the calls that use fetch
 function get(url) {
-  // the call that uses fetch
   return fetch(baseUrl + url).then(onSuccess, onError);
+}
+
+function del(url) {
+  const request = new Request(baseUrl + url, {
+    method: "DELETE"
+  });
+
+  return fetch(request).then(onSuccess, onError);
 }
 
 function onSuccess(response) {
