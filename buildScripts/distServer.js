@@ -8,7 +8,7 @@ import compression from "compression";
 const port = 3000; // available port
 const app = express(); // create express instance
 
-app.use(compression());
+app.use(compression()); // enable gzip compression in express
 app.use(express.static("dist"));
 
 app.get("/", function(req, res) {
